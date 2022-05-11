@@ -54,7 +54,7 @@ app.delete('/explorers/:id', async (req, res) => {
 	return res.json({message: "Eliminado correctamente"});
 });
 
-
+// Mission
 app.get('/mission', async (req, res) => {
   const allMission =  await prisma.mission.findMany({});
   res.json(allMission);
@@ -76,6 +76,27 @@ app.post('/mission', async (req, res) => {
   const message = 'Mission creado.';
   await prisma.mission.create({data: newMission});
   return res.json({message});
+});
+
+app.put('/mission/:id', async (req, res) => {
+	const id = parseInt(req.params.id);
+
+	await prisma.mission.update({
+		where: {
+			id: id
+		},
+		data: {
+			enrollments: req.body.enrollments
+		}
+	})
+
+	return res.json({message: "Actualizado correctamente"});
+});
+
+app.delete('/mission/:id', async (req, res) => {
+	const id = parseInt(req.params.id);
+	await prisma.mission.delete({where: {id: id}});
+	return res.json({message: "Eliminado correctamente"});
 });
 
 app.listen(port, () => {
