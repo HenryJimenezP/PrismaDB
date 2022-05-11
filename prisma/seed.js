@@ -83,6 +83,39 @@ const prisma = new PrismaClient();
         },
       });
 
+      const mission1 = await prisma.mission.upsert({
+        where: { name: 'Mission Node' },
+        update: {},
+        create: {
+          name: 'Mission Node',
+          lang: 'Javascript',
+          missionCommander: 'Carlo Gilmar',
+          enrollments: 600
+        },
+      });
+
+      const mission2 = await prisma.mission.upsert({
+        where: { name: 'Mission Java' },
+        update: {},
+        create: {
+          name: 'Mission Java',
+          lang: 'Java',
+          missionCommander: 'Fernanda Ochoa',
+          enrollments: 500
+        },
+      });
+
+      const mission3 = await prisma.mission.upsert({
+        where: { name: 'Mission FrontEnd' },
+        update: {},
+        create: {
+          name: 'Mission FrontEnd',
+          lang: 'HTML',
+          missionCommander: 'Rodrigo',
+          enrollments: 400
+        },
+      });
+
     console.log('Create 7 explorers');
   } catch(e) {
     console.error(e);
