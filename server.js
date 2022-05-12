@@ -107,6 +107,12 @@ app.delete('/mission/:id', async (req, res) => {
 	return res.json({message: "Eliminado correctamente"});
 });
 
+// missionCommander
+app.get('/missionCommander', async (req, res) => {
+  const allMissionCommnader =  await prisma.missionCommander.findMany({});
+  res.json(allMissionCommnader);
+});
+
 app.listen(port, () => {
   console.log(`Listening to requests on port ${port}`);
 });
