@@ -116,6 +116,29 @@ const prisma = new PrismaClient();
         },
       });
 
+      // missionCommander
+      const missionCommander1 = await prisma.missionCommander.upsert({
+        where: { name: 'Carlo Gilmar' },
+        update: {},
+        create: {
+          name: 'Carlo Gilmar',
+          username: 'carloInnovaccion',
+          mainStack: 'Elixir',
+          currentEnrollment: true
+        },
+      });
+
+      const missionCommander2 = await prisma.missionCommander.upsert({
+        where: { name: 'Fernanda Ochoa' },
+        update: {},
+        create: {
+          name: 'Fernanda Ochoa',
+          username: 'fernandaInnovaccion',
+          mainStack: 'Java',
+          currentEnrollment: false
+        },
+      });
+
     console.log('Create 7 explorers');
   } catch(e) {
     console.error(e);
